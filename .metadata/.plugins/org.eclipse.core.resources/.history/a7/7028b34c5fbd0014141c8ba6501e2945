@@ -1,0 +1,34 @@
+import java.util.*;
+
+public class FlightSeatingApp {
+
+	public static void main(String[] args) {
+		final int NUMOFBUSROW = 5;
+		final int NUMOFECOROW = 15;
+		String lName = "";
+		String fName = "";
+		String flightNum = "";
+		String travelDate = "";
+		
+		@SuppressWarnings("resource")
+		Scanner keyboard = new Scanner(System.in);
+		
+		SeatCollection seatCollection = new SeatCollection(NUMOFBUSROW,NUMOFECOROW, "136");
+		/*instantiate seats and rows and add to seatCollection */
+		System.out.print("Please enter your last name: ");
+		lName = keyboard.next();
+		System.out.print("Please enter your first name: ");
+		fName = keyboard.next();
+		System.out.print("Please enter your flight number: ");
+		flightNum = keyboard.next();
+		System.out.print("Please enter your travel date (DD/MM/YY): ");
+		travelDate = keyboard.next();
+		
+		Customer cus = new Customer(lName, fName, flightNum, travelDate);
+		SeatingHandler seatHandler = new SeatingHandler(seatCollection);
+		seatHandler.handleRequest(cus);
+		seatCollection = seatHandler.getSeatCollection();
+		System.out.println(seatCollection);
+	}
+
+}

@@ -1,0 +1,56 @@
+
+public class Row {
+	private int rowNum;
+	private int rowCap;
+	private Seat[] seats;
+	private int numAvblSeat;
+	
+	public Row(int rowNum, int rowCap){
+		this.rowNum = rowNum;
+		this.rowCap = rowCap;
+		Seat[] seats = new Seat[rowCap];
+		numAvblSeat = rowCap;
+	}
+	
+	public boolean checkAvbl(){
+		if(numAvblSeat > 0) return true;
+		else return false;
+	}
+	
+	public void lessNumAvblSeat(int numSeats){
+		numAvblSeat -= numSeats;
+	}
+
+	public int getRowNum() {
+		return rowNum;
+	}
+
+	public void setRowNum(int rowNum) {
+		this.rowNum = rowNum;
+	}
+
+	public int getRowCap() {
+		return rowCap;
+	}
+
+	public void setRowCap(int rowCap) {
+		this.rowCap = rowCap;
+	}
+
+	public Seat[] getSeats() {
+		return seats;
+	}
+
+	public void setSeats(Seat[] seats) {
+		this.seats = seats;
+	}
+
+	public int getNumAvblSeat() {
+		return numAvblSeat;
+	}
+
+	public void setNumAvblSeat(int numAvblSeat) {
+		this.numAvblSeat = numAvblSeat;
+	}
+
+}

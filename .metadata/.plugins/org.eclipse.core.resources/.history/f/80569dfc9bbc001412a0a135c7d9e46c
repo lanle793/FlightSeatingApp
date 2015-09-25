@@ -1,0 +1,37 @@
+import java.util.Date;
+
+
+public class Request {
+	public Date date;
+	public int rowNum;
+	public int seatNum;
+	public String type;
+
+}
+
+class SelectRequest extends Request{
+	private boolean business;
+	private boolean consecutive;
+	private String aisleOrWindow;
+	private int numOfSeat;
+	
+	public SelectRequest(){
+		business = false;
+		aisleOrWindow = "NA";
+		/*...*/
+	}
+
+	public int getNumSeat() {
+		// get number of seats the customer wants to reserve
+		return numOfSeat;
+	}
+	
+}
+
+class CancelRequest extends Request{
+	
+	public CancelRequest(){
+		/* ...*/
+	}
+	
+}

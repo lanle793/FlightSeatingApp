@@ -1,0 +1,20 @@
+
+public class Row {
+	private int rowNum;
+	private int rowCap;
+	private Seat[] seats;
+	private int numAvblSeat;
+	
+	public Row(int rowNum, int rowCap){
+		this.rowNum = rowNum;
+		this.rowCap = rowCap;
+		Seat[] seats = new Seat[rowCap];
+		numAvblSeat = rowCap;
+	}
+	
+	public boolean checkAvbl(){
+		if(numAvblSeat > 0) return true;
+		else return false;
+	}
+
+}

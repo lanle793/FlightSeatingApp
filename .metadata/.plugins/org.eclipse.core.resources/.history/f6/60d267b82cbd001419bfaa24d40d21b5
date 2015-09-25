@@ -1,0 +1,52 @@
+import java.util.*;
+
+public class Request {
+	public Date date;
+	public int rowNum;
+	public int seatNum;
+	public String type;
+
+}
+
+class SelectRequest extends Request{
+	private String preference;
+	private String busOrEco;
+	private String consecutive;
+	private String aisleOrWindow;
+	private int numOfSeats;
+	
+	public SelectRequest(){
+		@SuppressWarnings("resource")
+		Scanner keyboard = new Scanner(System.in);
+		System.out.print("Would you like to reserve a single seat or consecutive seats? (S/C): ");
+		consecutive = keyboard.next();
+		if(consecutive.equalsIgnoreCase("S")){
+			System.out.print("Do you have any preference for seating? (Y/N): ");
+			preference = keyboard.next();
+			if(preference.equalsIgnoreCase("Y")){
+				System.out.print("Business or Economy? (B/E): ");
+				busOrEco = keyboard.next();
+				System.out.print("Aisle or Window seat? (A/W): ");
+				aisleOrWindow = keyboard.next();
+			}
+		}
+		else{
+			System.out.print("How many consecutive seats would you like to reserve? ");
+			numOfSeats = keyboard.nextInt();
+		}
+		
+	}
+
+	public int getNumSeats() {
+		return numOfSeats;
+	}
+	
+}
+
+class CancelRequest extends Request{
+	
+	public CancelRequest(){
+		/* ...*/
+	}
+	
+}

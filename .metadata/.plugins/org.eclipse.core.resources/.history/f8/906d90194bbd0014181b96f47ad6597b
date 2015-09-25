@@ -1,0 +1,69 @@
+
+public class SeatingHandler {
+	private SeatCollection seatCollection;
+	private boolean full;
+	private Row[] rowToFind;
+	private Seat[] seatToFind;
+	
+	public SeatingHandler(SeatCollection seatCollection){
+		this.seatCollection = seatCollection;
+		full = checkAvbl();
+	}
+	
+	public boolean checkAvbl(){
+		/*check availability of each row in seatCollection
+		 * if all rows are taken then set full to true
+		 */
+		return full;
+	}
+	
+	public SeatCollection getSeatCollection(){
+		return seatCollection;
+	}
+	
+	public void handleRequest(Customer cus){ //precondition: seatingCollection is not full
+		if(cus.getRequestType().equalsIgnoreCase("S")){
+			SelectRequest request = (SelectRequest)cus.getRequest();
+			if(request.getConsecutive().equalsIgnoreCase("S")){
+				if(request.getPreference().equalsIgnoreCase("Y")){
+					if(request.getBusOrEco().equalsIgnoreCase("B")) 
+						rowToFind = seatCollection.getBusRow();
+					else rowToFind = seatCollection.getEcoRow();
+					for(int i = 0; i < rowToFind.length; i++){
+						if(rowToFind[i].checkAvbl()){
+							seatToFind = rowToFind[i].getSeats();
+							for(int j = 0; j < seatToFind.length; j++){
+								if(seatToFind[j].getAisleOrWindow().equals(request.getAisleOrWindow())){
+									seatToFind[j].changeAvbl();
+									seatToFind[j].setCus(cus);
+									rowToFind[i].lessNumAvblSeat(1);
+								}
+							}
+						}
+					}
+				}
+				else{
+					rowToFind = seatCollection.getEcoRow();
+					for(int i = 0; i < rowToFind.length; i++){
+						if(rowToFind[i].checkAvbl()){
+							seatToFind = rowToFind[i].getSeats();
+							for(int j = 0; j < seatToFind.length; j++){
+								if(seatToFind[j].isAvbl()){
+									seatToFind[j].changeAvbl();
+									seatToFind[j].setCus(cus);
+									rowToFind[i].lessNumAvblSeat(1);
+								}
+							}
+						}
+					}
+				}
+			}
+			else{
+				
+			}
+		}
+		else{
+			
+		}
+	}
+}

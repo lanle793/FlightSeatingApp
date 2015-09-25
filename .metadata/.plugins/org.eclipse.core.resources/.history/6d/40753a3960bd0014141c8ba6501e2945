@@ -1,0 +1,55 @@
+
+public class SeatCollection {
+	private String flightNum;
+	private Row[] busRow;
+	private Row[] ecoRow;
+	private boolean avbl;
+	
+	public SeatCollection(int numOfBusRow, int numOfEcoRow, String flightNum){
+		busRow = new Row[numOfBusRow];
+		ecoRow = new Row[numOfEcoRow];
+		this.flightNum = flightNum;
+	}
+	
+	public void checkAvbl(){
+		boolean busRowAvbl = false, ecoRowAvbl = false;
+		for(int i = 0; i < busRow.length; i++){ 
+			if(busRow[i].checkAvbl()){ 
+				busRowAvbl = true; 
+				break;
+			}
+		}
+		for(int i = 0; i < ecoRow.length; i++){
+			if(ecoRow[i].checkAvbl()){
+				busRowAvbl = true;
+				break;
+			}
+		}
+		avbl = busRowAvbl || ecoRowAvbl;
+	}
+
+	public Row[] getBusRow() {
+		return busRow;
+	}
+
+	public void setBusRow(Row[] busRow) {
+		this.busRow = busRow;
+	}
+
+	public Row[] getEcoRow() {
+		return ecoRow;
+	}
+
+	public void setEcoRow(Row[] ecoRow) {
+		this.ecoRow = ecoRow;
+	}
+
+	public boolean isAvbl() {
+		return avbl;
+	}
+
+	public void setAvbl(boolean avbl) {
+		this.avbl = avbl;
+	}
+
+}

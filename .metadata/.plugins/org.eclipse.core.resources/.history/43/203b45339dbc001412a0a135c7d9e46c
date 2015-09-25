@@ -1,0 +1,38 @@
+import java.util.*;
+
+public class Request {
+	public Date date;
+	public int rowNum;
+	public int seatNum;
+	public String type;
+
+}
+
+class SelectRequest extends Request{
+	private String preference;
+	private boolean business;
+	private boolean consecutive;
+	private String aisleOrWindow;
+	private int numOfSeat;
+	
+	public SelectRequest(){
+		Scanner keyboard = new Scanner(System.in);
+		System.out.print("Do you have any preference for seating: ");
+		preference = keyboard.next();
+		
+	}
+
+	public int getNumSeat() {
+		// get number of seats the customer wants to reserve
+		return numOfSeat;
+	}
+	
+}
+
+class CancelRequest extends Request{
+	
+	public CancelRequest(){
+		/* ...*/
+	}
+	
+}

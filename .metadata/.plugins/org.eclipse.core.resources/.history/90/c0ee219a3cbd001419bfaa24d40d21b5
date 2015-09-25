@@ -1,0 +1,66 @@
+
+public class Seat {
+	public boolean avbl;
+	public String aisleOrWindow;				//values are "A", "W", or "N"
+	public int seatNum;
+	
+	public void changeAvbl(){
+		if(avbl) avbl = false;
+		else avbl = true;
+	}
+	
+}
+
+class BusSeat extends Seat{
+	private int price;
+	private Customer cus;
+	
+	public BusSeat(int seatNum, String aisleOrWindow){
+		this.seatNum = seatNum;
+		this.aisleOrWindow = aisleOrWindow;
+	}
+	
+	public void setPrice(int price){
+		this.price = price;
+	}
+	
+	public int getPrice(){
+		return price;
+	}
+	
+	public void setCustomer(Customer cus){
+		this.cus = cus;
+	}
+	
+	public Customer getCustomer(){
+		return cus;
+	}
+
+}
+
+class EcoSeat extends Seat{
+	private int price;
+	private Customer cus;
+	
+	public EcoSeat(int seatNum, String aisleOrWindow){
+		this.seatNum = seatNum;
+		this.aisleOrWindow = aisleOrWindow;
+	}
+	
+	public void setPrice(int price){
+		this.price = price;
+	}
+	
+	public int getPrice(){
+		return price;
+	}
+	
+	public void setCustomer(Customer cus){
+		this.cus = cus;
+	}
+	
+	public Customer getCustomer(){
+		return cus;
+	}
+
+}
